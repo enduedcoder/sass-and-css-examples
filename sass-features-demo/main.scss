@@ -1,0 +1,151 @@
+@use 'sass:math';
+
+@import "_variables.scss";
+@import "typography.scss";
+
+// 3. VARIABLE
+$box-sizing: border-box;
+
+//8. MIXIN
+@mixin display-flex(){
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin media-min-width($width){
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+html {
+  font-size: 94.75%;
+
+  //6. ADVANCED MEDIA QUERY
+    @media (min-width: 40rem) {
+      font-size: 150%;
+    }
+}
+
+body {
+  font-family: $container-font-weight;
+  margin: 0;
+}
+
+.container {
+  @include display-flex();
+
+
+  //2. NESTED PROPERTY
+  flex: {
+    direction: column;
+    wrap: nowrap;
+  }
+
+  align-items: center;
+  padding: $size-default * 3 0;
+  box-sizing: $box-sizing;
+  @include media-min-width(40rem){
+    padding: $size-default * 3 0;
+  }
+}
+
+  // 7. INHERITANCE: if you got a certain ruleset for a given selector which you also want to
+//use on a different selector, then you can simply inherit from this selector. USING @extend
+.sass-section{
+  border: $border-color;
+  background: lighten(map-get($colors,main), 72%);
+  padding: $size-default * 2;
+  text-align: center;
+  width: 90%;
+  box-sizing: $box-sizing;
+  @include media-min-width(40rem){
+    width: $size-default * 30;
+  }
+}
+
+.sass-introduction { 
+  @extend .sass-section;
+  box-shadow: $size-tiny $size-tiny math.div($size-tiny, 2) #ccc;
+
+
+  // 1. NESTED RULE
+  p {
+    margin: 0;
+  }
+}
+
+.sass-details {
+  // 7. INHERITANCE: if you got a certain ruleset for a given selector which you also want to
+//use on a different selector, then you can simply inherit from this selector.
+  @extend .sass-section;
+  margin: $size-default * 2 0;
+
+  .section-header {
+    border-bottom: $border-color;
+
+    h1 {
+      margin: 0 0$size-default 0;
+    }
+  }
+}
+
+.documentation-links {
+  @include display-flex();
+
+  list-style: none;
+  margin: $size-default 0 0 0;
+  padding: 0;
+  
+  flex-direction: column;
+
+  li {
+    margin: $size-tiny 0;
+    background: white;
+
+    .documentation-link {
+      text-decoration: none;
+      color: map-get($colors,main);
+      display: block;
+      padding: $size-tiny;
+      border: $border-color;
+
+      &:hover,
+      &:active {
+        color: white;
+        background: map-get($colors, secondary);
+        border-color: map-get($colors, secondary);
+      }
+    }
+  }
+
+  
+}
+
+@media (min-width: 40rem) {
+  .container {
+    padding: $size-default * 3 0;
+  }
+
+  .sass-introduction,
+  .sass-details {
+    width: $size-default * 30;
+  }
+}
+
+@media (min-width: 60rem) {
+  html {
+    font-size: 150%;
+  }
+
+  .container {
+    padding: $size-default * 3 0;
+  }
+
+  .sass-introduction,
+  .sass-details {
+    width: $size-default * 30;
+  }
+}

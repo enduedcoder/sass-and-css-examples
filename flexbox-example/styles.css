@@ -1,0 +1,135 @@
+/* .flexbox-container {
+} */
+
+.flexbox-item {
+  width: 200px;
+  margin: 10px;
+  border: 3px solid #333;
+  background-color: #dfdfdf;
+}
+
+.flexbox-item-1 {
+  min-height: 100px;
+}
+
+.flexbox-item-2 {
+  min-height: 200px;
+}
+
+.flexbox-item-3 {
+  min-height: 300px;
+}
+
+/* Background styles */
+html {
+  border: 1px solid red;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flexbox-item-1 {
+  min-height: 100px;
+}
+
+.flexbox-item-2 {
+  min-height: 200px;
+}
+
+.flexbox-item-3 {
+  min-height: 300px;
+}
+
+.flexbox-container {
+  position: relative;
+  background-color: yellow;
+}
+
+.flexbox-container::before {
+  content: 'Flexbox Container';
+  position: absolute;
+  color: red;
+  top: 40px;
+  font-size: 2em;
+}
+
+.axis {
+  position: absolute;
+}
+
+.cross-axis {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 100%;
+  background-color: blue;
+}
+
+.main-axis {
+  width: 100%;
+  height: 5px;
+  background-color: red;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.axis::after {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 2em;
+}
+
+.main-axis::after {
+  content: 'Main axis';
+  color: red;
+  position: absolute;
+}
+
+.cross-axis::after {
+  content: 'Cross axis';
+  color: blue;
+  /* position: absolute; */
+  border: 1px solid red;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+}
+
+.flexbox-item {
+  position: relative;
+  width: 200px;
+  margin: 10px;
+  border: 3px solid #dfdfdf;
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.flexbox-item::before {
+  content: 'Flexbox item';
+  position: absolute;
+  color: black;
+  font-size: 25px;
+  top: 10px;
+  left: 15px;
+}
+
+.flexbox-item::after {
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.flexbox-item-1::after {
+  content: '1';
+}
+
+.flexbox-item-2::after {
+  content: '2';
+}
+
+.flexbox-item-3::after {
+  content: '3';
+}
